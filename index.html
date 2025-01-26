@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cyberpunk Vibes</title>
+    <title>Hack the Planet</title>
     <style>
         body {
             margin: 0;
@@ -11,16 +11,92 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: url('background-loop.gif') center/cover no-repeat;
-            color: #ff00ff;
+            background: linear-gradient(135deg, #001f00, #003300, #001f00);
+            background-size: 400% 400%;
+            animation: background-animation 10s infinite;
+            color: #00ff00;
             font-family: "Courier New", Courier, monospace;
             overflow: hidden;
         }
 
-        .skull {
-            width: 200px;
-            height: 200px;
-            background: url('skull.gif') center/contain no-repeat;
+        @keyframes background-animation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .glitch {
+            font-size: 4rem;
+            font-weight: bold;
+            position: relative;
+            text-transform: uppercase;
+            animation: glitch-animation 2s infinite;
+        }
+
+        .glitch::before,
+        .glitch::after {
+            content: "Hack the Planet";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: #00ff00;
+            overflow: hidden;
+            clip: rect(0, 900px, 0, 0);
+            animation: glitch-animation 2s infinite;
+        }
+
+        .glitch::before {
+            left: 2px;
+            text-shadow: -2px 0 red;
+        }
+
+        .glitch::after {
+            left: -2px;
+            text-shadow: -2px 0 blue;
+        }
+
+        @keyframes glitch-animation {
+            0% {
+                clip: rect(0, 900px, 0, 0);
+            }
+            10% {
+                clip: rect(0, 900px, 30px, 0);
+            }
+            20% {
+                clip: rect(0, 900px, 10px, 0);
+            }
+            30% {
+                clip: rect(0, 900px, 60px, 0);
+            }
+            40% {
+                clip: rect(0, 900px, 20px, 0);
+            }
+            50% {
+                clip: rect(0, 900px, 50px, 0);
+            }
+            60% {
+                clip: rect(0, 900px, 10px, 0);
+            }
+            70% {
+                clip: rect(0, 900px, 30px, 0);
+            }
+            80% {
+                clip: rect(0, 900px, 40px, 0);
+            }
+            90% {
+                clip: rect(0, 900px, 5px, 0);
+            }
+            100% {
+                clip: rect(0, 900px, 0, 0);
+            }
         }
 
         .scanlines {
@@ -32,8 +108,8 @@
             background: repeating-linear-gradient(
                 transparent 0px,
                 transparent 3px,
-                rgba(255, 255, 0, 0.1) 3px,
-                rgba(255, 255, 0, 0.1) 4px
+                rgba(0, 255, 0, 0.1) 3px,
+                rgba(0, 255, 0, 0.1) 4px
             );
             pointer-events: none;
             z-index: 10;
@@ -45,16 +121,21 @@
             left: 10%;
             width: 80%;
             height: 80%;
-            border: 2px solid #ff00ff;
-            box-shadow: 0 0 10px #ff00ff, 0 0 20px #ffff00;
+            border: 2px solid #00ff00;
+            box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
             z-index: 5;
+        }
+
+        audio {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
         }
     </style>
 </head>
 <body>
     <div class="neon-border"></div>
-    <div class="skull"></div>
+    <div class="glitch">Hack the Planet</div>
     <div class="scanlines"></div>
 </body>
 </html>
-
